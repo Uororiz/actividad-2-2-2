@@ -1,0 +1,146 @@
+<h2>Información General</h2>
+
+<form #formulario="ngForm" (ngSubmit) = "enviarUsuario(formulario)">
+  <div>
+    <ion-item>
+      <ion-label for="nombre">Número de Usuario:</ion-label>
+      <ion-input
+        type="text"
+        name="numeroUsuario"
+        #numeroUsuario="ngModel"
+        [(ngModel)]="usuario.numeroUsuario"
+        class="form-control form-control-sm"
+        id="numeroUsuario"
+        placeholder="Número de Usuario"
+        required="required"
+        maxlength="7"
+        minlength="7"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-label
+      color="danger"
+      *ngIf="numeroUsuario.touched && !numeroUsuario.valid"
+    >
+      <ion-label 
+      color="danger"
+      *ngIf="numeroUsuario.errors.required">
+        Número de Usuario requerido
+      </ion-label>
+      <ion-label 
+      color="danger"
+      *ngIf="numeroUsuario.errors.minlength">
+        El Número de Usuario no debe ser menor a
+        {{ numeroUsuario.errors.minlength.requiredLength }} digitos
+      </ion-label>
+    </ion-label>
+    <ion-item>
+      <ion-label for="nombre">Nombre(s):</ion-label>
+      <ion-input
+        type="text"
+        #nombre="ngModel"
+        name="nombre"
+        [(ngModel)]="usuario.nombre"
+        class="form-control form-control-sm"
+        id="nombre"
+        placeholder="Nombre(s)"
+        required="required"
+        minlength="3"
+        maxlength="12"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-label
+    color="danger"
+      *ngIf="nombre.touched && !nombre.valid"
+    >
+      <ion-label *ngIf="nombre.errors.required">El nombre es requerido</ion-label>
+      <ion-label *ngIf="nombre.errors.minlength">
+        El nombre no debe ser menor a
+        {{ nombre.errors.minlength.requiredLength }} caracteres
+      </ion-label>
+    </ion-label>
+
+    <ion-item>
+      <ion-label for="apellidoPaterno">Apellido Paterno:</ion-label>
+      <ion-input
+        type="text"
+        #apellidoPaterno="ngModel"
+        [(ngModel)]="usuario.apellidoPaterno"
+        name="apellidoPaterno"
+        class="form-control form-control-sm"
+        id="apellidoPaterno"
+        placeholder="Apellido Paterno"
+        maxlength="20"
+        minlength="3"
+        required="required"
+      ></ion-input>
+    </ion-item>
+    <ion-label
+    color="danger"
+    *ngIf="apellidoPaterno.touched && !apellidoPaterno.valid"
+  >
+    <ion-label *ngIf="apellidoPaterno.errors.required">
+      El Apellido Paterno es requerido
+    </ion-label>
+    <ion-label *ngIf="apellidoPaterno.errors.minlength">
+      El Apellido Paterno no debe ser menor a
+      {{ apellidoPaterno.errors.minlength.requiredLength }} caracteres
+    </ion-label>
+  </ion-label>
+
+    <ion-item>
+      <ion-label for="apellidoMaterno">Apellido Materno:</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="usuario.apellidoMaterno"
+        name="apellidoMaterno"
+        class="form-control form-control-sm"
+        id="apellidoMaterno"
+        placeholder="Apellido Materno"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Seleccione su Puesto laboral</ion-label>
+      <ion-select
+        class="form-control form-control-sm"
+        #puesto="ngModel"
+        [(ngModel)]="usuario.puesto"
+        name="puesto"
+        class="form-control form-control-sm"
+        id="puesto"
+        required="required"
+      >
+        <ion-select-option>Analista</ion-select-option>
+        <ion-select-option>Diseñador</ion-select-option>
+        <ion-select-option>Desarrollador</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label for="correo">Correo:</ion-label>
+      <ion-input
+        type="email"
+        [(ngModel)]="usuario.correo"
+        name="correo"
+        class="form-control form-control-sm"
+        id="correo"
+        placeholder="correo@correo.com"
+      ></ion-input>
+      <small id="correo" class="form-text text-muted"
+        >Ingrese su correo electrónico.</small
+      >
+    </ion-item>
+    <p class="ion-text-center">
+    <ion-button
+      color="warning"
+      type="reset"
+      value="Resetear"
+      style="margin-right: 50px"
+      >Resetear</ion-button
+    >
+    <ion-button type="submit" color="success"> Guardar </ion-button>
+  </p>  
+  </div>
+</form>

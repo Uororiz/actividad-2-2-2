@@ -1,0 +1,43 @@
+<ion-text><h2>Usuarios Registrados</h2></ion-text>
+
+<ion-list>
+  <ion-item-sliding *ngFor="let usuario of usuarios">
+    <ion-item>
+    <ion-list>
+    <ion-item>
+      <ion-label>
+        Nombre: {{ usuario.nombre + " " + usuario.apellidoPaterno }}
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="usuario.correo">
+      <ion-label 
+        >Correo: {{ usuario.correo }}
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Puesto laboral: {{usuario.puesto}}</ion-label>
+    </ion-item>
+    </ion-list>
+      <ion-item-options side="end">
+        <ion-button
+          color="warning"
+          [routerLink]="['editar', usuario.idUsuario]"
+        >
+          <ion-icon name="brush"></ion-icon>
+        </ion-button>
+        <ion-button color="danger" (click)="eliminar(usuario)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item-options>
+    </ion-item>
+    <ion-label color="primary">
+      Deslize de derecha a izquierda para más opciones
+    </ion-label>
+  </ion-item-sliding>
+</ion-list>
+<p *ngIf="!usuarios || usuarios.length === 0" class="ion-text-center">
+  <ion-label color="danger">
+    No hay usuarios agregados, registra uno desde la pestaña de Agregar
+    Usuario</ion-label
+  >
+</p>
