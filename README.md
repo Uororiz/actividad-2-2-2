@@ -1,0 +1,1 @@
+Aplicación hecha con ionic que simula el registro de estudiantes y se guarda de manera local haciendo uso del localStorage para el manejo de datos. Además se puede consultar y eliminar la información en su respectivo tab interactivo que funge como menú.
